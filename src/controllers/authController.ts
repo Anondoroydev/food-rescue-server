@@ -168,7 +168,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
     }
 
     const resetToken = generateToken(20);
-    const resetExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    const resetExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
     await UserModel.update(user.id, {
       reset_token: resetToken,
@@ -190,11 +190,36 @@ export const forgotPassword = async (req: Request, res: Response) => {
 
 export const resetPassword = async (req: Request, res: Response) => {
   try {
-    const { token, newPassword } = req.body;
+    const { email, token, newPassword } = req.body;
 
-    const user = await UserModel.findByEmail(req.body.email || '');
-    if (!user || user.reset_token !== token || !user.reset_token_expiry || new Date(user.reset_token_expiry) < new Date()) {
-      return res.status(400).json({ success: false, message: 'Invalid or expired reset token' });
+    // Validate inputs
+    if (!email || !token || !newPassword) {
+      return res.status(400).json({ success: false, message: 'Email, token, and newPassword are required' });
+    }
+
+    const user = await UserModel.findByEmail(email);
+    
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    if (!user.reset_token) {
+      return res.status(400).json({ success: false, message: 'No reset token found for this user' });
+    }
+
+    if (user.reset_token !== token) {
+      return res.status(400).json({ success: false, message: 'Invalid reset token' });
+    }
+
+    if (!user.reset_token_expiry) {
+      return res.status(400).json({ success: false, message: 'Token expiry not set' });
+    }
+
+    const expiryDate = new Date(user.reset_token_expiry);
+    const now = new Date();
+    
+    if (expiryDate < now) {
+      return res.status(400).json({ success: false, message: `Reset token expired. Token expiry: ${expiryDate.toISOString()}, Current time: ${now.toISOString()}` });
     }
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -206,6 +231,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
     res.status(200).json({ success: true, message: 'Password has been reset successfully' });
   } catch (error) {
+    logError(`Reset password error: ${(error as Error).message}`);
     res.status(500).json({ success: false, message: 'Error resetting password' });
   }
 };

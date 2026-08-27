@@ -221,6 +221,8 @@ Authorization: Bearer {{token}}
 }
 ```
 
+**⏱️ Token Validity:** ২৪ ঘন্টা (Reset link email পেওয়ার পর)
+
 ---
 
 ## 🍕 FOOD ROUTES (খাবার পোস্টিং)

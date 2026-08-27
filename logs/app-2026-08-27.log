@@ -132,3 +132,71 @@
 [2026-08-27T11:50:32.840Z] [INFO]: Email sent to resturent@gmail.com: <acc687a6-b447-4723-a728-eac568856ca1@gmail.com>
 [2026-08-27T12:20:10.050Z] [INFO]: SIGTERM received. Shutting down server gracefully...
 [2026-08-27T12:20:10.051Z] [INFO]: Process terminated.
+[2026-08-27T16:12:48.113Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T16:12:48.165Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T16:12:48.165Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T16:12:48.167Z] [INFO]: Running background job: reminderSender
+[2026-08-27T16:12:48.169Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T16:12:48.170Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T16:15:04.946Z] [INFO]: Email sent to ngo@example.com: <1be314a2-97ad-8fdd-da92-03ea471bd6a8@gmail.com>
+[2026-08-27T16:15:44.164Z] [INFO]: Email sent to admin@example.com: <589a8cb4-4637-acbe-6aac-60de7d7707d1@gmail.com>
+[2026-08-27T16:21:46.926Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:21:53.174Z] [INFO]: Email sent to admin@example.com: <7668b52b-904a-fc70-4257-763d4b502b66@gmail.com>
+[2026-08-27T16:22:32.763Z] [INFO]: Email sent to ajoysarker553@gmail.com: <9ff007f2-8b74-a954-6e05-9947ca001f2a@gmail.com>
+[2026-08-27T16:23:09.551Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:24:01.895Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T16:24:01.940Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T16:24:01.941Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T16:24:01.941Z] [INFO]: Running background job: reminderSender
+[2026-08-27T16:24:01.944Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T16:24:01.945Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T16:24:04.414Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:24:10.255Z] [INFO]: Email sent to ajoysarker553@gmail.com: <d0214c2b-bc72-27a7-b76f-3cf5bdab6638@gmail.com>
+[2026-08-27T16:27:40.317Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:27:44.856Z] [INFO]: Email sent to ajoysarker553@gmail.com: <8f5c9183-4c8b-15d9-398b-3d2003e9691d@gmail.com>
+[2026-08-27T16:37:05.124Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:37:09.721Z] [INFO]: Email sent to ajoysarker553@gmail.com: <b2ea2dd3-8ffe-7705-d776-e791832c7c4c@gmail.com>
+[2026-08-27T16:41:20.266Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T16:41:20.312Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T16:41:20.312Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T16:41:20.313Z] [INFO]: Running background job: reminderSender
+[2026-08-27T16:41:20.316Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T16:41:20.317Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T16:41:58.146Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:42:02.924Z] [INFO]: Email sent to ajoysarker553@gmail.com: <1988a0b5-4aa8-8aff-fd63-3f963f5f6a21@gmail.com>
+[2026-08-27T16:43:56.839Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE id = $3 RETURNING *
+[2026-08-27T16:44:00.418Z] [INFO]: Email sent to ajoysarker553@gmail.com: <b507445f-2aef-6cb3-87a2-35b75bf226df@gmail.com>
+[2026-08-27T16:45:44.527Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:45:44.536Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T16:45:44.537Z] [INFO]: Process terminated.
+[2026-08-27T16:47:36.523Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:48:02.584Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:48:47.528Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:50:37.624Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T16:50:37.739Z] [INFO]: Process terminated.
+[2026-08-27T16:50:37.746Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:50:38.568Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:50:53.754Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:51:21.721Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:52:00.386Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:52:37.738Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T16:52:37.739Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T16:52:37.739Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T16:52:37.739Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T16:52:37.740Z] [INFO]: Running background job: reminderSender
+[2026-08-27T16:52:37.743Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T16:52:37.756Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T16:52:37.757Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T16:52:37.757Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T16:52:37.757Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
