@@ -1,0 +1,132 @@
+[2026-08-27T04:46:01.592Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T04:46:01.727Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T04:46:01.728Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T04:46:01.729Z] [INFO]: Running background job: reminderSender
+[2026-08-27T04:46:01.733Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T04:46:01.734Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T04:46:04.797Z] [INFO]: Socket client connected: whhPrMxnRUoeP_PiAAAB
+[2026-08-27T04:46:22.141Z] [INFO]: Socket client connected: 1rwtBawC6zl1kCgdAAAD
+[2026-08-27T04:46:30.163Z] [INFO]: Socket client connected: 6w6A0UrME3OiJFc8AAAF
+[2026-08-27T04:46:33.842Z] [INFO]: Socket client connected: -EyeJWlx4wpqoBM5AAAH
+[2026-08-27T04:46:35.050Z] [INFO]: Socket client connected: SrmuEj3uSoNVRPh9AAAJ
+[2026-08-27T04:46:58.165Z] [INFO]: Socket client connected: HQmjHZ03TcHFaNZVAAAL
+[2026-08-27T04:46:58.222Z] [INFO]: Socket HQmjHZ03TcHFaNZVAAAL joined user_3
+[2026-08-27T04:47:03.750Z] [INFO]: Socket client disconnected: HQmjHZ03TcHFaNZVAAAL
+[2026-08-27T04:47:04.015Z] [INFO]: Socket client connected: VOpcloTFdFnpqRJvAAAN
+[2026-08-27T04:47:04.079Z] [INFO]: Socket VOpcloTFdFnpqRJvAAAN joined user_3
+[2026-08-27T04:47:05.455Z] [INFO]: Socket client connected: CQHSockQQ-fbRq2FAAAP
+[2026-08-27T04:47:05.493Z] [INFO]: Socket CQHSockQQ-fbRq2FAAAP joined user_3
+[2026-08-27T04:47:07.112Z] [INFO]: Socket client disconnected: 1rwtBawC6zl1kCgdAAAD
+[2026-08-27T04:47:15.093Z] [INFO]: Socket client disconnected: 6w6A0UrME3OiJFc8AAAF
+[2026-08-27T04:47:18.800Z] [INFO]: Socket client disconnected: -EyeJWlx4wpqoBM5AAAH
+[2026-08-27T04:47:19.996Z] [INFO]: Socket client disconnected: SrmuEj3uSoNVRPh9AAAJ
+[2026-08-27T04:47:48.968Z] [INFO]: Socket client disconnected: VOpcloTFdFnpqRJvAAAN
+[2026-08-27T04:49:58.897Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: INSERT INTO foods (restaurant_id, food_name, description, quantity, food_type, image, pickup_time, pickup_date, expiry_time)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *
+[2026-08-27T04:49:58.919Z] [INFO]: Socket client disconnected: CQHSockQQ-fbRq2FAAAP
+[2026-08-27T04:59:42.320Z] [INFO]: Socket client connected: 2Q6RK794VblvGxpeAAAR
+[2026-08-27T04:59:42.352Z] [INFO]: Socket 2Q6RK794VblvGxpeAAAR joined user_3
+[2026-08-27T04:59:46.346Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: INSERT INTO foods (restaurant_id, food_name, description, quantity, food_type, image, pickup_time, pickup_date, expiry_time)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *
+[2026-08-27T05:00:27.307Z] [INFO]: Socket client disconnected: 2Q6RK794VblvGxpeAAAR
+[2026-08-27T05:03:37.258Z] [INFO]: Socket client connected: DAMgrVPwWdPs6xdOAAAT
+[2026-08-27T05:03:37.304Z] [INFO]: Socket DAMgrVPwWdPs6xdOAAAT joined user_3
+[2026-08-27T05:03:38.715Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: INSERT INTO foods (restaurant_id, food_name, description, quantity, food_type, image, pickup_time, pickup_date, expiry_time)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *
+[2026-08-27T05:04:22.224Z] [INFO]: Socket client disconnected: DAMgrVPwWdPs6xdOAAAT
+[2026-08-27T05:09:27.556Z] [INFO]: Socket client connected: mr3Nw5xKTmvt3DfyAAAV
+[2026-08-27T05:09:27.589Z] [INFO]: Socket mr3Nw5xKTmvt3DfyAAAV joined user_3
+[2026-08-27T05:09:47.724Z] [ERROR]: SQLite query execution error: SQLite3 can only bind numbers, strings, bigints, buffers, and null | SQL: INSERT INTO foods (restaurant_id, food_name, description, quantity, food_type, image, pickup_time, pickup_date, expiry_time)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *
+[2026-08-27T05:10:12.529Z] [INFO]: Socket client disconnected: mr3Nw5xKTmvt3DfyAAAV
+[2026-08-27T05:18:15.347Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:18:15.405Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:18:15.406Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:18:15.407Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:18:15.411Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:18:40.560Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:18:40.608Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:18:40.608Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:18:40.609Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:18:40.611Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:19:28.438Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:19:28.494Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:19:28.495Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:19:28.496Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:19:28.499Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:19:28.500Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5001
+[2026-08-27T05:19:32.327Z] [INFO]: Socket client connected: nHoRd_MaDxzWOgThAAAB
+[2026-08-27T05:19:37.797Z] [INFO]: Socket client disconnected: nHoRd_MaDxzWOgThAAAB
+[2026-08-27T05:20:07.300Z] [INFO]: Socket client connected: 5Fluuf0RzkSdJbufAAAD
+[2026-08-27T05:20:10.163Z] [INFO]: Socket client connected: -Qjf2e3Iet40Es02AAAF
+[2026-08-27T05:20:12.369Z] [INFO]: Socket client connected: VExefLzTdtRAfw8rAAAH
+[2026-08-27T05:20:29.359Z] [INFO]: Socket client connected: W-3E331REmpmuCzWAAAJ
+[2026-08-27T05:20:29.399Z] [INFO]: Socket W-3E331REmpmuCzWAAAJ joined user_3
+[2026-08-27T05:20:52.272Z] [INFO]: Socket client disconnected: 5Fluuf0RzkSdJbufAAAD
+[2026-08-27T05:20:55.131Z] [INFO]: Socket client disconnected: -Qjf2e3Iet40Es02AAAF
+[2026-08-27T05:20:57.323Z] [INFO]: Socket client disconnected: VExefLzTdtRAfw8rAAAH
+[2026-08-27T05:21:04.243Z] [INFO]: Socket client disconnected: W-3E331REmpmuCzWAAAJ
+[2026-08-27T05:24:38.896Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:24:46.225Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:24:47.537Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:24:47.759Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:24:47.937Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:24:48.143Z] [ERROR]: Unhandled Application Error: Error: Failed to lookup view "layouts/main" in views directory "/home/anondo-ray/Downloads/Creative-Final-Project-main/views"
+    at app.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/application.js:597:17)
+    at ServerResponse.render (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/express/lib/response.js:1049:7)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/dist/app.js:89:9
+[2026-08-27T05:27:13.090Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:27:13.173Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:27:13.174Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:27:13.186Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:27:13.197Z] [INFO]: Expired 1 food items: 
+[2026-08-27T05:27:13.198Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:27:55.672Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:27:55.715Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:27:55.715Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:27:55.716Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:27:55.719Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:27:55.721Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T05:39:07.155Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T05:39:07.210Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T05:39:07.211Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T05:39:07.212Z] [INFO]: Running background job: reminderSender
+[2026-08-27T05:39:07.217Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T05:45:29.312Z] [INFO]: Email sent to Anondo554@gmail.com: <fc55f0aa-3c68-c7ec-85ab-a2ed6bfc5847@gmail.com>
+[2026-08-27T11:33:06.159Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-08-27T11:33:06.214Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-08-27T11:33:06.215Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T11:33:06.215Z] [INFO]: Running background job: reminderSender
+[2026-08-27T11:33:06.219Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-08-27T11:33:06.219Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T11:48:47.148Z] [ERROR]: Unhandled Application Error: SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/body-parser/lib/types/json.js:169:10)
+    at parse (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/body-parser/lib/types/json.js:90:15)
+    at /home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/body-parser/lib/read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)
+    at invokeCallback (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/raw-body/index.js:238:16)
+    at done (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/raw-body/index.js:227:7)
+    at IncomingMessage.onEnd (/home/anondo-ray/Downloads/Creative-Final-Project-main/node_modules/raw-body/index.js:287:7)
+    at IncomingMessage.emit (node:events:509:28)
+    at endReadableNT (node:internal/streams/readable:1729:12)
+[2026-08-27T11:50:32.840Z] [INFO]: Email sent to resturent@gmail.com: <acc687a6-b447-4723-a728-eac568856ca1@gmail.com>

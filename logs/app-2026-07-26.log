@@ -1,0 +1,21 @@
+[2026-07-26T03:00:41.682Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T03:00:41.795Z] [INFO]: Running background job: reminderSender
+[2026-07-26T03:00:41.811Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-07-26T04:00:41.706Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T05:39:03.535Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T07:32:42.384Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T08:32:42.383Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T09:25:18.912Z] [INFO]: Running background job: reminderSender
+[2026-07-26T09:25:18.920Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-07-26T09:32:42.382Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T10:32:43.654Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T11:32:43.661Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T13:09:35.572Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T14:09:35.586Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T16:10:17.540Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-07-26T16:10:17.632Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-07-26T16:10:17.635Z] [INFO]: Running background job: expiryChecker
+[2026-07-26T16:10:17.637Z] [INFO]: Running background job: reminderSender
+[2026-07-26T16:10:17.647Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-07-26T16:10:17.649Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-07-26T17:10:17.651Z] [INFO]: Running background job: expiryChecker

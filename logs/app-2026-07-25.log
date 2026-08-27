@@ -1,0 +1,51 @@
+[2026-07-25T16:27:29.991Z] [ERROR]: Database initialization error: 
+[2026-07-25T16:27:29.998Z] [INFO]: Running background job: expiryChecker
+[2026-07-25T16:27:30.000Z] [INFO]: Running background job: reminderSender
+[2026-07-25T16:27:30.008Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-07-25T16:27:30.014Z] [ERROR]: expiryChecker background job error: 
+[2026-07-25T16:27:30.015Z] [ERROR]: reminderSender background job error: 
+[2026-07-25T16:28:51.478Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-07-25T16:28:51.808Z] [INFO]: Admin user created (email: admin@foodrescue.com, password: admin123)
+[2026-07-25T16:28:51.810Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.811Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.811Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.812Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.812Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.813Z] [ERROR]: SQLite query execution error: near "OR": syntax error | SQL: 
+      INSERT INTO food_categories (name, description, icon)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (name) DO NOTHING
+    
+[2026-07-25T16:28:51.813Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-07-25T16:28:51.816Z] [INFO]: Running background job: expiryChecker
+[2026-07-25T16:28:51.818Z] [INFO]: Running background job: reminderSender
+[2026-07-25T16:28:51.823Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-07-25T16:28:51.825Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-07-25T16:45:58.985Z] [WARN]: PostgreSQL unavailable. Initializing embedded SQLite database fallback.
+[2026-07-25T16:45:59.037Z] [INFO]: Database tables, triggers, indexes, and seed data initialized successfully.
+[2026-07-25T16:45:59.038Z] [INFO]: Running background job: expiryChecker
+[2026-07-25T16:45:59.039Z] [INFO]: Running background job: reminderSender
+[2026-07-25T16:45:59.045Z] [INFO]: Sent reminders for 0 pending approvals and 0 pending pickups.
+[2026-07-25T16:45:59.046Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-07-25T17:45:59.043Z] [INFO]: Running background job: expiryChecker
+[2026-07-25T18:45:59.042Z] [INFO]: Running background job: expiryChecker
