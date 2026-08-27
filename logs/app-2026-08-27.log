@@ -130,3 +130,5 @@
     at IncomingMessage.emit (node:events:509:28)
     at endReadableNT (node:internal/streams/readable:1729:12)
 [2026-08-27T11:50:32.840Z] [INFO]: Email sent to resturent@gmail.com: <acc687a6-b447-4723-a728-eac568856ca1@gmail.com>
+[2026-08-27T12:20:10.050Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T12:20:10.051Z] [INFO]: Process terminated.
