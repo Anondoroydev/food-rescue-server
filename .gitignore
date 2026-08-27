@@ -31,7 +31,7 @@ uploads/**/*
 reports/
 reports/**/*
 
-# IDE Files
+# IDE & Editor Files
 .vscode/
 .idea/
 *.swp
@@ -47,6 +47,13 @@ reports/**/*
 *.sln
 *.sw?
 .vs/
+
+# AI Assistant & Extension Files
+.agents/
+.claude/
+.cladue/
+.devin/
+.copilot/
 
 # OS Files
 .DS_Store
