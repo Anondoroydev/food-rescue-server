@@ -1,0 +1,86 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Compiled Output
+dist/
+build/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# User Uploads
+uploads/
+uploads/**/*
+
+# Generated Reports
+reports/
+reports/**/*
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+.c9/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vs/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary Files
+tmp/
+temp/
+*.bak
+*.swp
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Misc
+.eslintcache
+.prettierignore
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Local Postman
+postman_environment.json
+postman_collection.json.bak
