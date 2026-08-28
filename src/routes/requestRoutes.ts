@@ -11,8 +11,8 @@ import { authenticate, isNGO, isRestaurant } from '../middleware/auth';
 
 const router = Router();
 
-router.post('/', authenticate, isNGO, createRequest);
 router.get('/my', authenticate, isNGO, getMyRequests);
+router.post('/', authenticate, isNGO, createRequest);
 router.put('/:id/approve', authenticate, isRestaurant, approveRequest);
 router.put('/:id/reject', authenticate, isRestaurant, rejectRequest);
 router.put('/:id/collect', authenticate, isNGO, collectFood);

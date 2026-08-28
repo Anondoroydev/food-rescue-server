@@ -1,0 +1,27 @@
+[
+  {
+    "id": -1787852922825,
+    "name": "Anondo Ray",
+    "email": "ajoysarker554@gmail.com",
+    "password": "$2a$10$o8SijgSYbdG.3Si9gjVT6uyO/qUh4YAWBZlqprkjad4asceIN6Qm.",
+    "phone": "01700000000",
+    "role": "admin",
+    "organization_name": "Help NGO",
+    "latitude": 23.8,
+    "longitude": 90.4,
+    "is_active": true
+  },
+  {
+    "id": -1787853051509,
+    "name": "Admin",
+    "email": "ajoysarker553@gmail.com",
+    "password": "$2a$10$ztn6eYXWXp4Hs9j6op/GtOKdTX7I3Qid/uE6Avx6e4vmde2gWzIGe",
+    "phone": "01826339098",
+    "role": "admin",
+    "organization_name": "Updated NGO",
+    "is_active": true,
+    "address": "123 Street",
+    "reset_token": null,
+    "reset_token_expiry": null
+  }
+]

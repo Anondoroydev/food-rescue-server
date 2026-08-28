@@ -82,7 +82,7 @@ app.use((_req, res) => {
     res.status(404).json({
         success: false,
         message: '404 - Not Found',
-        info: 'This server is running in API-only mode. Frontend views removed.'
+        info: 'Server is running '
     });
 });
 // Global Error Handler
@@ -98,7 +98,13 @@ app.use((err, req, res, _next) => {
 // =============================================
 const startServer = async () => {
     // 1. Initialize DB Schema & Seed Data
-    await (0, db_1.initDB)();
+    try {
+        await (0, db_1.initDB)();
+    }
+    catch (dbError) {
+        (0, logger_1.logError)(`Database initialization failed: ${dbError.message}`);
+        (0, logger_1.logError)('Server will continue running without full database functionality');
+    }
     // 2. Start Background Jobs
     (0, expiryChecker_1.startExpiryCheckerJob)();
     (0, reminderSender_1.startReminderSenderJob)();

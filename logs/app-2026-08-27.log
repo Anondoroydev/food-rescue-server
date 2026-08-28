@@ -200,3 +200,473 @@
       WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
     
 [2026-08-27T16:52:37.757Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:36:46.935Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:36:46.939Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:36:46.940Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:36:46.940Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:36:46.942Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:36:46.958Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:36:46.959Z] [INFO]: Process terminated.
+[2026-08-27T17:36:46.975Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:36:46.980Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:36:46.981Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:36:46.982Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:36:53.050Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:36:53.050Z] [ERROR]: Register error: password authentication failed for user "postgres"
+[2026-08-27T17:36:54.664Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:36:54.664Z] [ERROR]: Register error: password authentication failed for user "postgres"
+[2026-08-27T17:36:56.117Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:36:56.118Z] [ERROR]: Register error: password authentication failed for user "postgres"
+[2026-08-27T17:36:57.691Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:36:57.692Z] [ERROR]: Register error: password authentication failed for user "postgres"
+[2026-08-27T17:36:58.931Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:36:58.931Z] [ERROR]: Register error: password authentication failed for user "postgres"
+[2026-08-27T17:37:07.986Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:37:07.986Z] [ERROR]: Login error: password authentication failed for user "postgres"
+[2026-08-27T17:37:39.448Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.449Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.449Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.449Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.450Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.450Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.451Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.453Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.453Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.451Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.454Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.456Z] [INFO]: Process terminated.
+[2026-08-27T17:37:39.459Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:37:39.459Z] [INFO]: Process terminated.
+[2026-08-27T17:38:39.090Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:38:39.091Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:38:39.091Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:38:39.092Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:38:39.093Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:38:39.095Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:38:39.105Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:38:39.106Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:38:39.108Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:38:39.108Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:38:43.699Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:38:43.700Z] [ERROR]: Login error: password authentication failed for user "postgres"
+[2026-08-27T17:38:46.114Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:38:46.115Z] [ERROR]: Login error: password authentication failed for user "postgres"
+[2026-08-27T17:39:23.863Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:39:23.865Z] [ERROR]: Login error: password authentication failed for user "postgres"
+[2026-08-27T17:40:29.208Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:40:29.209Z] [INFO]: Process terminated.
+[2026-08-27T17:41:37.513Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:41:37.513Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:41:37.514Z] [INFO]: Process terminated.
+[2026-08-27T17:41:37.514Z] [INFO]: Process terminated.
+[2026-08-27T17:41:37.514Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:41:37.513Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:41:37.518Z] [INFO]: Process terminated.
+[2026-08-27T17:41:37.520Z] [INFO]: Process terminated.
+[2026-08-27T17:41:40.355Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:41:40.355Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:41:40.356Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:41:40.356Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:41:40.357Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:41:40.359Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:41:40.370Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:41:40.370Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:41:40.373Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:41:40.376Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:42:01.931Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:42:01.931Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:42:20.505Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:42:20.506Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:42:38.294Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:42:38.294Z] [ERROR]: Database error during register (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:42:41.598Z] [INFO]: Email sent to testuser@example.com: <bf666c98-80bd-baf6-eb8e-1fed86598d34@gmail.com>
+[2026-08-27T17:42:46.003Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:42:46.003Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:42:51.704Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:42:51.704Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:43:08.737Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:43:08.738Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:43:10.296Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:43:10.296Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:43:28.980Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:28.981Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.121Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.122Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.122Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.123Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.122Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.123Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.121Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.122Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:43:45.123Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.124Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.122Z] [INFO]: Process terminated.
+[2026-08-27T17:43:45.124Z] [INFO]: Process terminated.
+[2026-08-27T17:43:48.478Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:43:48.479Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:43:48.479Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:43:48.479Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:43:48.481Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:43:48.484Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:43:48.504Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:43:48.505Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:43:48.510Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:43:48.511Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:44:13.943Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:44:13.943Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:44:23.583Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:44:23.583Z] [ERROR]: Database error during register (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:44:23.741Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:44:23.741Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:44:26.654Z] [INFO]: Email sent to testuser2@example.com: <b56a4f05-c7ca-1cfd-43a9-63086ecbca23@gmail.com>
+[2026-08-27T17:44:30.381Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:44:30.382Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:44:55.867Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:44:55.870Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.845Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.845Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.845Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.846Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.846Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.846Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.846Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.846Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.845Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.847Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:45:15.848Z] [INFO]: Process terminated.
+[2026-08-27T17:45:15.847Z] [INFO]: Process terminated.
+[2026-08-27T17:45:19.638Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:45:19.639Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:45:19.639Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:45:19.640Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:45:19.641Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:45:19.644Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:45:19.656Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:45:19.656Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:45:19.661Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:45:19.663Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:45:21.873Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:45:21.873Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:45:26.840Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:45:26.840Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:45:51.933Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:45:51.934Z] [ERROR]: Database error during register (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:45:54.741Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:45:54.742Z] [ERROR]: Database error during register (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:45:55.101Z] [INFO]: Email sent to ajoysarker554@gmail.com: <61013884-5d3f-256b-b52d-03ebcdcca833@gmail.com>
+[2026-08-27T17:46:03.960Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:46:03.960Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:46:05.926Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:46:05.927Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:46:16.716Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:46:16.716Z] [ERROR]: Database error during login (fallback to in-memory): password authentication failed for user "postgres"
+[2026-08-27T17:46:31.683Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:46:31.684Z] [INFO]: Process terminated.
+[2026-08-27T17:48:18.015Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:48:18.015Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:48:18.015Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:48:18.016Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:48:18.017Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:48:18.020Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:48:18.029Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:48:18.030Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:48:18.030Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:48:18.030Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:48:35.649Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:35.649Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:48:40.815Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:40.815Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:48:42.639Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:42.639Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:48:44.590Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:44.590Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:48:45.920Z] [INFO]: Email sent to ajoysarker554@gmail.com: <b70e333b-fdc0-7a62-ff27-7d669b411308@gmail.com>
+[2026-08-27T17:48:49.420Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:49.423Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:48:50.900Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:48:50.901Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:49:31.706Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:49:31.708Z] [INFO]: Process terminated.
+[2026-08-27T17:50:00.911Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:50:00.912Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:50:00.912Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:50:00.912Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:50:00.914Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:50:00.917Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:50:00.929Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:50:00.930Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:50:00.931Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:50:00.932Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:50:02.818Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:50:02.818Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:50:13.720Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:50:13.721Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:50:26.119Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:50:26.119Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:50:51.338Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:50:51.338Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:50:54.355Z] [INFO]: Email sent to ajoysarker553@gmail.com: <c71c09d9-6cd4-a198-a6b5-c80ad32022b4@gmail.com>
+[2026-08-27T17:50:54.678Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:50:54.678Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:51:01.226Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:51:01.226Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:51:01.374Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: INSERT INTO system_logs (user_id, action, details, ip_address, user_agent)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *
+[2026-08-27T17:51:05.211Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:51:05.211Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:51:05.370Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: INSERT INTO system_logs (user_id, action, details, ip_address, user_agent)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *
+[2026-08-27T17:51:24.665Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:51:31.718Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:51:50.468Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:52:27.915Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:52:30.208Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:52:57.473Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:53:05.298Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:53:33.457Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:53:33.458Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:53:33.628Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: INSERT INTO system_logs (user_id, action, details, ip_address, user_agent)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *
+[2026-08-27T17:53:40.559Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:53:40.559Z] [ERROR]: Database error during register (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:53:49.538Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:53:49.539Z] [INFO]: Process terminated.
+[2026-08-27T17:54:11.015Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:54:11.016Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:54:11.016Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:54:11.016Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:54:11.018Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:54:11.020Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:54:11.032Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:54:11.033Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:54:11.034Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:54:11.035Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:54:12.320Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:54:14.188Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:54:44.630Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:54:44.633Z] [INFO]: Process terminated.
+[2026-08-27T17:55:03.912Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:55:03.913Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:55:03.913Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:55:03.913Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:55:03.915Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:55:03.918Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:55:03.932Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:55:03.933Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:55:03.934Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:55:03.935Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:55:06.626Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:55:13.410Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T17:55:13.410Z] [ERROR]: Database error during login (fallback to dev-store): password authentication failed for user "postgres"
+[2026-08-27T17:55:13.655Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: INSERT INTO system_logs (user_id, action, details, ip_address, user_agent)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *
+[2026-08-27T17:55:21.492Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:55:40.742Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:56:23.896Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:56:37.612Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:56:37.615Z] [INFO]: Process terminated.
+[2026-08-27T17:56:57.164Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:56:57.164Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:56:57.165Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:56:57.165Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:56:57.166Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:56:57.169Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:56:57.186Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:56:57.187Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:56:57.188Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:56:57.188Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:56:58.274Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:56:58.275Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:56:58.292Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T17:57:00.366Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:57:00.366Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:57:00.375Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T17:57:02.042Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:57:02.043Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:57:02.057Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T17:57:09.872Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:57:09.872Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:57:09.880Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, phone, address, role, organization_name, latitude, longitude, profile_image, is_active, created_at, updated_at FROM users WHERE id = $1
+[2026-08-27T17:57:45.349Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:57:45.353Z] [INFO]: Process terminated.
+[2026-08-27T17:58:18.973Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:58:18.974Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:58:18.974Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:58:18.974Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:58:18.975Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:58:18.979Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:58:18.990Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:58:18.990Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:58:18.991Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:58:18.991Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:58:23.799Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:58:23.799Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:58:23.809Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, phone, address, role, organization_name, latitude, longitude, profile_image, is_active, created_at, updated_at FROM users WHERE id = $1
+[2026-08-27T17:58:32.447Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:58:32.448Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:58:32.463Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T17:58:34.044Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:58:34.044Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:58:34.054Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T17:59:08.258Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T17:59:08.259Z] [INFO]: Process terminated.
+[2026-08-27T17:59:48.636Z] [ERROR]: PostgreSQL unavailable: password authentication failed for user "postgres"
+[2026-08-27T17:59:48.637Z] [ERROR]: Database initialization failed: password authentication failed for user "postgres"
+[2026-08-27T17:59:48.637Z] [ERROR]: Server will continue running without full database functionality
+[2026-08-27T17:59:48.637Z] [INFO]: Running background job: expiryChecker
+[2026-08-27T17:59:48.638Z] [INFO]: Running background job: reminderSender
+[2026-08-27T17:59:48.641Z] [INFO]: 🚀 Food Rescue Server running on http://localhost:5000
+[2026-08-27T17:59:48.655Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      UPDATE foods
+      SET status = 'expired', updated_at = NOW()
+      WHERE expiry_time < NOW() AND status = 'available'
+      RETURNING id, food_name
+    
+[2026-08-27T17:59:48.656Z] [ERROR]: expiryChecker background job error: password authentication failed for user "postgres"
+[2026-08-27T17:59:48.656Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: 
+      SELECT r.id, f.food_name, f.restaurant_id, u.email as restaurant_email, u.name as restaurant_name
+      FROM requests r
+      JOIN foods f ON r.food_id = f.id
+      JOIN users u ON f.restaurant_id = u.id
+      WHERE r.status = 'pending' AND r.created_at < NOW() - INTERVAL '2 hours'
+    
+[2026-08-27T17:59:48.656Z] [ERROR]: reminderSender background job error: password authentication failed for user "postgres"
+[2026-08-27T17:59:51.583Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T17:59:51.583Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T17:59:51.594Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: UPDATE users SET name = $1, phone = $2, address = $3, organization_name = $4 WHERE id = $5 RETURNING *
+[2026-08-27T18:00:15.154Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T18:00:15.154Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T18:00:15.169Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T18:00:41.621Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T18:00:41.621Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T18:00:41.633Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T18:00:43.486Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT id, name, email, role, is_active FROM users WHERE id = $1
+[2026-08-27T18:00:43.486Z] [ERROR]: Database error during authenticate: password authentication failed for user "postgres"
+[2026-08-27T18:00:43.492Z] [ERROR]: PostgreSQL query error: password authentication failed for user "postgres" | SQL: SELECT * FROM users WHERE email = $1
+[2026-08-27T18:01:58.858Z] [INFO]: SIGTERM received. Shutting down server gracefully...
+[2026-08-27T18:01:58.860Z] [INFO]: Process terminated.

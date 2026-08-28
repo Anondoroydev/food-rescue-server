@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isAdmin = exports.isNGO = exports.isRestaurant = exports.authorize = exports.authenticate = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const db_1 = require("../config/db");
+const logger_1 = require("../utils/logger");
+const devStore_1 = require("../utils/devStore");
 const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_food_rescue_key';
 const authenticate = async (req, res, next) => {
     try {
@@ -17,30 +19,67 @@ const authenticate = async (req, res, next) => {
             token = req.cookies.token;
         }
         if (!token) {
-            if (req.accepts('html')) {
+            // For API routes prefer JSON responses — only redirect for non-API HTML page requests
+            const isApiRequest = typeof req.originalUrl === 'string' && req.originalUrl.startsWith('/api');
+            if (req.accepts('html') && !isApiRequest) {
                 return res.redirect('/auth/login');
             }
             return res.status(401).json({ success: false, message: 'Not authorized to access this route' });
         }
         const decoded = jsonwebtoken_1.default.verify(token, JWT_SECRET);
-        const userResult = await (0, db_1.query)('SELECT id, name, email, role, is_active FROM users WHERE id = $1', [decoded.id]);
-        if (userResult.rows.length === 0) {
-            return res.status(401).json({ success: false, message: 'User no longer exists' });
+        try {
+            const userResult = await (0, db_1.query)('SELECT id, name, email, role, is_active FROM users WHERE id = $1', [decoded.id]);
+            if (userResult.rows.length === 0) {
+                // Not found in primary DB, try dev-store by email
+                const devUser = decoded.email ? (0, devStore_1.getDevUserByEmail)(decoded.email) : undefined;
+                if (!devUser) {
+                    return res.status(401).json({ success: false, message: 'User no longer exists' });
+                }
+                if (!devUser.is_active) {
+                    return res.status(403).json({ success: false, message: 'User account is deactivated' });
+                }
+                req.user = {
+                    id: devUser.id,
+                    name: devUser.name,
+                    email: devUser.email,
+                    role: devUser.role
+                };
+                return next();
+            }
+            const user = userResult.rows[0];
+            if (!user.is_active) {
+                return res.status(403).json({ success: false, message: 'User account is deactivated' });
+            }
+            req.user = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            };
+            return next();
         }
-        const user = userResult.rows[0];
-        if (!user.is_active) {
-            return res.status(403).json({ success: false, message: 'User account is deactivated' });
+        catch (dbErr) {
+            // DB unavailable: try dev-store fallback using token payload
+            (0, logger_1.logError)(`Database error during authenticate: ${dbErr.message}`);
+            const devUser = decoded.email ? (0, devStore_1.getDevUserByEmail)(decoded.email) : undefined;
+            if (!devUser) {
+                return res.status(401).json({ success: false, message: 'Invalid or expired token' });
+            }
+            if (!devUser.is_active) {
+                return res.status(403).json({ success: false, message: 'User account is deactivated' });
+            }
+            req.user = {
+                id: devUser.id,
+                name: devUser.name,
+                email: devUser.email,
+                role: devUser.role
+            };
+            return next();
         }
-        req.user = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role
-        };
-        next();
     }
     catch (error) {
-        if (req.accepts('html')) {
+        const isApiRequest = typeof req.originalUrl === 'string' && req.originalUrl.startsWith('/api');
+        if (req.accepts('html') && !isApiRequest) {
             return res.redirect('/auth/login');
         }
         return res.status(401).json({ success: false, message: 'Invalid or expired token' });
