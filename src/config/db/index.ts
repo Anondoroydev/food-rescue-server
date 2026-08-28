@@ -1,6 +1,6 @@
-import { pool } from './pool';
-export { pool };
+import { db } from './pool';
+export { db };
 export { query } from './query';
 export { initDB } from './init';
 
-export default pool;
+export default db;

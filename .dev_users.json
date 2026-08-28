@@ -23,5 +23,17 @@
     "address": "123 Street",
     "reset_token": null,
     "reset_token_expiry": null
+  },
+  {
+    "id": -1787895664525,
+    "name": "Restaurant Owner",
+    "email": "resturent@gmail.com",
+    "password": "$2a$10$eXE9D2IPVAsCn5VZdmJRaOF0q.2HOFpOI6tghR9wn33b9d/iP6BY2",
+    "phone": "01800000000",
+    "role": "restaurant",
+    "organization_name": "My Restaurant",
+    "latitude": 23.8,
+    "longitude": 90.4,
+    "is_active": true
   }
 ]

@@ -32,7 +32,8 @@ export class SystemLogModel {
 
   static async cleanup(daysOld: number = 30): Promise<number> {
     const res = await query(
-      `DELETE FROM system_logs WHERE created_at < NOW() - INTERVAL '${daysOld} days'`
+      `DELETE FROM system_logs WHERE created_at < datetime('now', '-' || ? || ' days')`,
+      [daysOld]
     );
     return res.rowCount || 0;
   }

@@ -109,6 +109,15 @@ const startServer = async () => {
     (0, expiryChecker_1.startExpiryCheckerJob)();
     (0, reminderSender_1.startReminderSenderJob)();
     // 3. Start Listening HTTP & Socket Server
+    server.on('error', (error) => {
+        if (error.code === 'EADDRINUSE') {
+            (0, logger_1.logError)(`Port ${PORT} is already in use. Please stop the previous server or use another port.`);
+            process.exitCode = 1;
+            return;
+        }
+        (0, logger_1.logError)(`Server startup error: ${error.message}`);
+        process.exitCode = 1;
+    });
     server.listen(PORT, () => {
         (0, logger_1.logInfo)(`🚀 Food Rescue Server running on http://localhost:${PORT}`);
     });

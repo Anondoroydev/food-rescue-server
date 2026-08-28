@@ -5,16 +5,16 @@ import { SystemLogModel } from '../models/SystemLog';
 
 export const getDashboard = async (_req: Request, res: Response) => {
   try {
-    const usersCount = await query(`SELECT COUNT(*) FROM users`);
-    const foodsCount = await query(`SELECT COUNT(*) FROM foods`);
-    const requestsCount = await query(`SELECT COUNT(*) FROM requests`);
-    const donationsCount = await query(`SELECT COUNT(*) FROM donations`);
+    const usersCount = await query(`SELECT COUNT(*) as count FROM users`);
+    const foodsCount = await query(`SELECT COUNT(*) as count FROM foods`);
+    const requestsCount = await query(`SELECT COUNT(*) as count FROM requests`);
+    const donationsCount = await query(`SELECT COUNT(*) as count FROM donations`);
 
     const monthlyStats = await query(`
-      SELECT TO_CHAR(created_at, 'Mon YYYY') as month, COUNT(*) as count
+      SELECT strftime('%Y-%m', created_at) as month, COUNT(*) as count
       FROM foods
-      GROUP BY TO_CHAR(created_at, 'Mon YYYY'), DATE_TRUNC('month', created_at)
-      ORDER BY DATE_TRUNC('month', created_at) DESC
+      GROUP BY strftime('%Y-%m', created_at)
+      ORDER BY month DESC
       LIMIT 6
     `);
 
@@ -88,8 +88,8 @@ export const getReports = async (_req: Request, res: Response) => {
 
 export const getStats = async (_req: Request, res: Response) => {
   try {
-    const foodStatusBreakdown = await query(`SELECT status, COUNT(*) FROM foods GROUP BY status`);
-    const requestStatusBreakdown = await query(`SELECT status, COUNT(*) FROM requests GROUP BY status`);
+    const foodStatusBreakdown = await query(`SELECT status, COUNT(*) as count FROM foods GROUP BY status`);
+    const requestStatusBreakdown = await query(`SELECT status, COUNT(*) as count FROM requests GROUP BY status`);
 
     res.status(200).json({
       success: true,

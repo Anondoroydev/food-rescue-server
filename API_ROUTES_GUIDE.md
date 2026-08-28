@@ -559,7 +559,7 @@ Authorization: Bearer {{token}}
 ```json
 {
   "success": true,
-  "qrCode": "data:image/png;base64,iVBORw0KGgo...",
+  "qrCode": "/uploads/qr/qr_request_1.png",
   "token": "qr_verification_token"
 }
 ```

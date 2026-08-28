@@ -144,14 +144,34 @@ export const login = async (req: Request, res: Response) => {
           return res.status(401).json({ success: false, message: 'Invalid email or password' });
         }
 
+        // Auto-sync memUser to SQLite users table so they get a real SQLite ID
+        let syncedUser = memUser;
+        try {
+          const insertedUser = await UserModel.create({
+            name: memUser.name,
+            email: memUser.email,
+            password: memUser.password || password,
+            phone: memUser.phone || '0000000000',
+            address: memUser.address,
+            role: (memUser.role || 'restaurant') as any,
+            organization_name: memUser.organization_name,
+            latitude: memUser.latitude,
+            longitude: memUser.longitude
+          });
+          syncedUser = insertedUser;
+        } catch (_) {
+          const dbUser = await UserModel.findByEmail(memUser.email);
+          if (dbUser) syncedUser = dbUser;
+        }
+
         await SystemLogModel.create({
-          user_id: memUser.id,
+          user_id: syncedUser.id,
           action: 'DEV_STORE_USER_LOGIN',
           ip_address: req.ip,
           user_agent: req.headers['user-agent']
         }).catch(() => {});
 
-        return createSendToken(memUser, 200, res);
+        return createSendToken(syncedUser, 200, res);
       }
 
       if (!user.is_active) {

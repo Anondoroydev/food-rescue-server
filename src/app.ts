@@ -133,6 +133,16 @@ const startServer = async () => {
   startReminderSenderJob();
 
   // 3. Start Listening HTTP & Socket Server
+  server.on('error', (error: NodeJS.ErrnoException) => {
+    if (error.code === 'EADDRINUSE') {
+      logError(`Port ${PORT} is already in use. Please stop the previous server or use another port.`);
+      process.exitCode = 1;
+      return;
+    }
+    logError(`Server startup error: ${error.message}`);
+    process.exitCode = 1;
+  });
+
   server.listen(PORT, () => {
     logInfo(`🚀 Food Rescue Server running on http://localhost:${PORT}`);
   });

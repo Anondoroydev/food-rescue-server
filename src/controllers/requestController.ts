@@ -175,13 +175,20 @@ export const getQRCode = async (req: Request, res: Response) => {
       return res.status(404).json({ success: false, message: 'Request not found' });
     }
 
+    let qrCodeUrl: string;
+    let token: string;
+
     let existingQR = await QRCodeModel.findByRequest(id);
     if (existingQR) {
-      return res.status(200).json({ success: true, qrCode: existingQR.qr_code, token: existingQR.token });
+      qrCodeUrl = existingQR.qr_code;
+      token = existingQR.token;
+    } else {
+      const generated = await generateQRCodeForRequest(id);
+      qrCodeUrl = generated.qrCodeUrl;
+      token = generated.token;
     }
 
-    const { qrCodeDataUrl, token } = await generateQRCodeForRequest(id);
-    res.status(200).json({ success: true, qrCode: qrCodeDataUrl, token });
+    res.status(200).json({ success: true, qrCode: qrCodeUrl, token });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error generating QR code' });
   }

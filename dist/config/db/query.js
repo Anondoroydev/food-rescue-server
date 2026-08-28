@@ -9,7 +9,12 @@ const query = async (text, params = []) => {
         return { rows: res.rows, rowCount: res.rowCount || res.rows.length };
     }
     catch (err) {
+        const trimmed = text.trim();
+        const isReadOnlyQuery = /^SELECT\b/i.test(trimmed);
         (0, logger_1.logError)(`PostgreSQL query error: ${err.message} | SQL: ${text}`);
+        if (isReadOnlyQuery) {
+            return { rows: [], rowCount: 0 };
+        }
         throw err;
     }
 };
