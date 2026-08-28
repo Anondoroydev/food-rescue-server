@@ -1,292 +1,993 @@
 {
-  "info": {
-    "_postman_id": "a1f9e6d2-0000-4000-8000-000000000001",
-    "name": "Food Rescue API - Complete",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Complete Food Rescue API Collection with all endpoints"
-  },
-  "item": [
-    {
-      "name": "AUTH",
-      "item": [
-        {
-          "name": "Register",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"NGO User\",\n  \"email\": \"ngo@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"01700000000\",\n  \"role\": \"ngo\",\n  \"organization_name\": \"Help NGO\",\n  \"latitude\": 23.8,\n  \"longitude\": 90.4\n}"
-            },
-            "url": { "raw": "{{base_url}}/api/auth/register", "host": ["{{base_url}}"], "path": ["api","auth","register"] }
-          }
-        },
-        {
-          "name": "Login",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"ngo@example.com\",\n  \"password\": \"password123\"\n}" },
-            "url": { "raw": "{{base_url}}/api/auth/login", "host": ["{{base_url}}"], "path": ["api","auth","login"] }
-          }
-        },
-        {
-          "name": "Get Profile",
-          "request": {
-            "method": "GET",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
-            "url": { "raw": "{{base_url}}/api/auth/profile", "host": ["{{base_url}}"], "path": ["api","auth","profile"] }
-          }
-        },
-        {
-          "name": "Update Profile",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Updated Name\",\n  \"phone\": \"01700000001\",\n  \"address\": \"123 Street\",\n  \"organization_name\": \"Updated NGO\"\n}" },
-            "url": { "raw": "{{base_url}}/api/auth/profile", "host": ["{{base_url}}"], "path": ["api","auth","profile"] }
-          }
-        },
-        {
-          "name": "Change Password",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"oldPassword\": \"password123\",\n  \"newPassword\": \"newPassword123\"\n}" },
-            "url": { "raw": "{{base_url}}/api/auth/change-password", "host": ["{{base_url}}"], "path": ["api","auth","change-password"] }
-          }
-        },
-        {
-          "name": "Forgot Password",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"ngo@example.com\"\n}" },
-            "url": { "raw": "{{base_url}}/api/auth/forgot-password", "host": ["{{base_url}}"], "path": ["api","auth","forgot-password"] }
-          }
-        },
-        {
-          "name": "Reset Password",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"ngo@example.com\",\n  \"token\": \"reset_token_here\",\n  \"newPassword\": \"newPassword123\"\n}" },
-            "url": { "raw": "{{base_url}}/api/auth/reset-password", "host": ["{{base_url}}"], "path": ["api","auth","reset-password"] }
-          }
-        }
-      ]
-    },
-    {
-      "name": "FOODS",
-      "item": [
-        {
-          "name": "List All Foods (Public)",
-          "request": {
-            "method": "GET",
-            "url": { "raw": "{{base_url}}/api/foods?status=available&food_type=vegetarian", "host": ["{{base_url}}"], "path": ["api","foods"] }
-          }
-        },
-        {
-          "name": "Get Nearby Foods (Public)",
-          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/foods/nearby?lat=23.8&lon=90.4&radius=15", "host": ["{{base_url}}"], "path": ["api","foods","nearby"] } }
-        },
-        {
-          "name": "Get Food By ID (Public)",
-          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/foods/1", "host": ["{{base_url}}"], "path": ["api","foods","1"] } }
-        },
-        {
-          "name": "Create Food (Restaurant Only)",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                { "key": "food_name", "value": "Surplus Pizza", "type": "text" },
-                { "key": "description", "value": "Fresh leftover pizza slices", "type": "text" },
-                { "key": "quantity", "value": "10", "type": "text" },
-                { "key": "food_type", "value": "non-vegetarian", "type": "text" },
-                { "key": "pickup_time", "value": "14:00", "type": "text" },
-                { "key": "pickup_date", "value": "2026-08-28", "type": "text" },
-                { "key": "image", "type": "file", "src": "" }
-              ]
-            },
-            "url": { "raw": "{{base_url}}/api/foods", "host": ["{{base_url}}"], "path": ["api","foods"] }
-          }
-        },
-        {
-          "name": "Update Food (Restaurant Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"food_name\": \"Updated Pizza\",\n  \"quantity\": \"15\",\n  \"description\": \"Updated description\"\n}" },
-            "url": { "raw": "{{base_url}}/api/foods/1", "host": ["{{base_url}}"], "path": ["api","foods","1"] }
-          }
-        },
-        {
-          "name": "Delete Food (Restaurant Only)",
-          "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/foods/1", "host": ["{{base_url}}"], "path": ["api","foods","1"] } }
-        }
-      ]
-    },
-    {
-      "name": "REQUESTS",
-      "item": [
-        {
-          "name": "Create Request (NGO Only)",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"food_id\": 1,\n  \"request_message\": \"We need this food for our NGO\",\n  \"collection_time\": \"14:30\",\n  \"collection_date\": \"2026-08-28\"\n}" },
-            "url": { "raw": "{{base_url}}/api/requests", "host": ["{{base_url}}"], "path": ["api","requests"] }
-          }
-        },
-        {
-          "name": "Get My Requests (NGO)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/requests/my", "host": ["{{base_url}}"], "path": ["api","requests","my"] } }
-        },
-        {
-          "name": "Approve Request (Restaurant Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/requests/1/approve", "host": ["{{base_url}}"], "path": ["api","requests","1","approve"] }
-          }
-        },
-        {
-          "name": "Reject Request (Restaurant Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/requests/1/reject", "host": ["{{base_url}}"], "path": ["api","requests","1","reject"] }
-          }
-        },
-        {
-          "name": "Collect Food (NGO Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/requests/1/collect", "host": ["{{base_url}}"], "path": ["api","requests","1","collect"] }
-          }
-        },
-        {
-          "name": "Get QR Code (NGO Only)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/requests/1/qr", "host": ["{{base_url}}"], "path": ["api","requests","1","qr"] } }
-        }
-      ]
-    },
-    {
-      "name": "NOTIFICATIONS",
-      "item": [
-        {
-          "name": "Get All Notifications",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/notifications", "host": ["{{base_url}}"], "path": ["api","notifications"] } }
-        },
-        {
-          "name": "Mark Notification as Read",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"id\": 1\n}" },
-            "url": { "raw": "{{base_url}}/api/notifications/read", "host": ["{{base_url}}"], "path": ["api","notifications","read"] }
-          }
-        },
-        {
-          "name": "Mark All Notifications as Read",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/notifications/read-all", "host": ["{{base_url}}"], "path": ["api","notifications","read-all"] }
-          }
-        }
-      ]
-    },
-    {
-      "name": "CHAT",
-      "item": [
-        {
-          "name": "Get Chat History",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/chat/2", "host": ["{{base_url}}"], "path": ["api","chat","2"] } }
-        },
-        {
-          "name": "Send Message",
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{\n  \"receiver_id\": 2,\n  \"message\": \"Hello, this is a test message\"\n}" },
-            "url": { "raw": "{{base_url}}/api/chat", "host": ["{{base_url}}"], "path": ["api","chat"] }
-          }
-        }
-      ]
-    },
-    {
-      "name": "DONATIONS",
-      "item": [
-        {
-          "name": "Get Donations",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/donations", "host": ["{{base_url}}"], "path": ["api","donations"] } }
-        },
-        {
-          "name": "Get Donation Stats",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/donations/stats", "host": ["{{base_url}}"], "path": ["api","donations","stats"] } }
-        }
-      ]
-    },
-    {
-      "name": "REPORTS",
-      "item": [
-        {
-          "name": "Download PDF Report",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/reports/download", "host": ["{{base_url}}"], "path": ["api","reports","download"] } }
-        }
-      ]
-    },
-    {
-      "name": "ADMIN",
-      "item": [
-        {
-          "name": "Get Dashboard (Admin Only)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/admin/dashboard", "host": ["{{base_url}}"], "path": ["api","admin","dashboard"] } }
-        },
-        {
-          "name": "Get All Users (Admin Only)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/admin/users?role=ngo", "host": ["{{base_url}}"], "path": ["api","admin","users"] } }
-        },
-        {
-          "name": "Block User (Admin Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/admin/users/2/block", "host": ["{{base_url}}"], "path": ["api","admin","users","2","block"] }
-          }
-        },
-        {
-          "name": "Unblock User (Admin Only)",
-          "request": {
-            "method": "PUT",
-            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
-            "body": { "mode": "raw", "raw": "{}" },
-            "url": { "raw": "{{base_url}}/api/admin/users/2/unblock", "host": ["{{base_url}}"], "path": ["api","admin","users","2","unblock"] }
-          }
-        },
-        {
-          "name": "Get Reports (Admin Only)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/admin/reports", "host": ["{{base_url}}"], "path": ["api","admin","reports"] } }
-        },
-        {
-          "name": "Get Stats (Admin Only)",
-          "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": { "raw": "{{base_url}}/api/admin/stats", "host": ["{{base_url}}"], "path": ["api","admin","stats"] } }
-        }
-      ]
-    }
-  ],
-  "variable": [
-    { "key": "base_url", "value": "http://localhost:5000" },
-    { "key": "token", "value": "" }
-  ]
+	"info": {
+		"_postman_id": "718f815c-511f-4e67-a266-c67339df10ba",
+		"name": "Food Rescue API - Complete",
+		"description": "Complete Food Rescue API Collection with all endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50949688",
+		"_collection_link": "https://ajoysarker553-9673872.postman.co/workspace/Ajoy-Sarkar's-Workspace~210b762c-0123-4a84-82c3-0828b380b840/collection/50949688-718f815c-511f-4e67-a266-c67339df10ba?action=share&source=collection_link&creator=50949688"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"NGO User\",\n  \"email\": \"ajoysarker553@gmail.com\",\n  \"password\": \"password123\",\n  \"phone\": \"01700000000\",\n  \"role\": \"admin\",\n  \"organization_name\": \"Help NGO\",\n  \"latitude\": 23.8,\n  \"longitude\": 90.4\n}\n\n\n// {\n//   \"name\": \"Anondo Ray\",\n//   \"email\": \"Anondo554@gmail.com\",\n//   \"password\": \"Anondo123@\",\n//   \"phone\": \"01700000000\",\n//   \"role\": \"ngo\",\n//   \"organization_name\": \"Help NGO\",\n//   \"latitude\": 23.8,\n//   \"longitude\": 90.4\n// }\n\n// {\n//   \"name\": \"Restaurant Owner\",\n//   \"email\": \"resturent@gmail.com\",\n//   \"password\": \"Anondo123@\",\n//   \"phone\": \"01800000000\",\n//   \"role\": \"restaurant\",\n//   \"organization_name\": \"My Restaurant\",\n//   \"latitude\": 23.8,\n//   \"longitude\": 90.4\n// }"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//   \"email\": \"Anondo554@gmail.com\",\n//   \"password\": \"Anondo123@\"\n// }\n// {\n//   \"email\": \"resturent@gmail.com\",\n//   \"password\": \"Anondo123@\"\n// }\n\n{\n  \"email\": \"ajoysarker553@gmail.com\",\n  \"password\": \"Ajoy123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Admin\",\n  \"phone\": \"01826339098\",\n  \"address\": \"123 Street\",\n  \"organization_name\": \"Updated NGO\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"password123\",\n  \"newPassword\": \"Anondo123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/change-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ajoysarker553@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ajoysarker553@gmail.com\",\n  \"token\": \"f4bbf957a186040445e430f10cdc7df78dbe8342\",\n  \"newPassword\": \"Ajoy1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FOODS",
+			"item": [
+				{
+					"name": "List All Foods (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/foods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nearby Foods (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/foods/nearby",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods",
+								"nearby"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Food By ID (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/foods/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Food (Restaurant Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "food_name",
+									"value": "Surplus Pizza",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Fresh leftover pizza slices",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "food_type",
+									"value": "vegetarian",
+									"type": "text"
+								},
+								{
+									"key": "pickup_time",
+									"value": "14:00",
+									"type": "text"
+								},
+								{
+									"key": "pickup_date",
+									"value": "2026-08-28",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/foods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Food (Restaurant Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"food_name\": \"Surplus Pizza\",\n  \"quantity\": \"25\",\n  \"description\": \"Updated description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/foods/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Food (Restaurant Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/foods/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"foods",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "REQUESTS",
+			"item": [
+				{
+					"name": "Create Request (NGO Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"food_id\": 1,\n  \"request_message\": \"We need this food for our NGO\",\n  \"collection_time\": \"14:30\",\n  \"collection_date\": \"2026-08-28\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/requests",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Requests (NGO)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/requests/my",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests",
+								"my"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve Request (Restaurant Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/requests/1/approve",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests",
+								"1",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Request (Restaurant Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/requests/1/reject",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests",
+								"1",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collect Food (NGO Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/requests/1/collect",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests",
+								"1",
+								"collect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get QR Code (NGO Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/requests/1/qr",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"requests",
+								"1",
+								"qr"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NOTIFICATIONS",
+			"item": [
+				{
+					"name": "Get All Notifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/notifications",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Notification as Read",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/notifications/read",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"notifications",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark All Notifications as Read",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/notifications/read-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"notifications",
+								"read-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHAT",
+			"item": [
+				{
+					"name": "Get Chat History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/chat/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"receiver_id\": 2,\n  \"message\": \"Hello, this is a test message\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/chat",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DONATIONS",
+			"item": [
+				{
+					"name": "Get Donations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/donations",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"donations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Donation Stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/donations/stats",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"donations",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "REPORTS",
+			"item": [
+				{
+					"name": "Download PDF Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/reports/download",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Get Dashboard (Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users (Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block User (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/2/block",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"2",
+								"block"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unblock User (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/admin/users/2/unblock",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"2",
+								"unblock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Reports (Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/reports",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stats (Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/admin/stats",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
 }
