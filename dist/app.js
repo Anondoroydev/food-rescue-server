@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.initApp = void 0;
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const path_1 = __importDefault(require("path"));
@@ -96,19 +97,25 @@ app.use((err, req, res, _next) => {
 // =============================================
 // PART 20: SERVER STARTUP
 // =============================================
+let dbInitialized = false;
+const initApp = async () => {
+    if (!dbInitialized) {
+        try {
+            await (0, db_1.initDB)();
+        }
+        catch (dbError) {
+            (0, logger_1.logError)(`Database initialization failed: ${dbError.message}`);
+        }
+        dbInitialized = true;
+    }
+};
+exports.initApp = initApp;
 const startServer = async () => {
-    // 1. Initialize DB Schema & Seed Data
-    try {
-        await (0, db_1.initDB)();
-    }
-    catch (dbError) {
-        (0, logger_1.logError)(`Database initialization failed: ${dbError.message}`);
-        (0, logger_1.logError)('Server will continue running without full database functionality');
-    }
-    // 2. Start Background Jobs
+    await (0, exports.initApp)();
+    // Start Background Jobs
     (0, expiryChecker_1.startExpiryCheckerJob)();
     (0, reminderSender_1.startReminderSenderJob)();
-    // 3. Start Listening HTTP & Socket Server
+    // Start Listening HTTP & Socket Server
     server.on('error', (error) => {
         if (error.code === 'EADDRINUSE') {
             (0, logger_1.logError)(`Port ${PORT} is already in use. Please stop the previous server or use another port.`);
@@ -122,7 +129,9 @@ const startServer = async () => {
         (0, logger_1.logInfo)(`🚀 Food Rescue Server running on http://localhost:${PORT}`);
     });
 };
-startServer();
+if (!process.env.VERCEL) {
+    startServer();
+}
 // Graceful Shutdown
 process.on('SIGTERM', () => {
     (0, logger_1.logInfo)('SIGTERM received. Shutting down server gracefully...');
@@ -130,3 +139,4 @@ process.on('SIGTERM', () => {
         (0, logger_1.logInfo)('Process terminated.');
     });
 });
+exports.default = app;

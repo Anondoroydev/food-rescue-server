@@ -125,12 +125,19 @@ const getQRCode = async (req, res) => {
         if (!foodReq) {
             return res.status(404).json({ success: false, message: 'Request not found' });
         }
+        let qrCodeUrl;
+        let token;
         let existingQR = await QRCode_1.QRCodeModel.findByRequest(id);
         if (existingQR) {
-            return res.status(200).json({ success: true, qrCode: existingQR.qr_code, token: existingQR.token });
+            qrCodeUrl = existingQR.qr_code;
+            token = existingQR.token;
         }
-        const { qrCodeDataUrl, token } = await (0, qrService_1.generateQRCodeForRequest)(id);
-        res.status(200).json({ success: true, qrCode: qrCodeDataUrl, token });
+        else {
+            const generated = await (0, qrService_1.generateQRCodeForRequest)(id);
+            qrCodeUrl = generated.qrCodeUrl;
+            token = generated.token;
+        }
+        res.status(200).json({ success: true, qrCode: qrCodeUrl, token });
     }
     catch (error) {
         res.status(500).json({ success: false, message: 'Error generating QR code' });

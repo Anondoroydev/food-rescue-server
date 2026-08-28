@@ -119,20 +119,26 @@ app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
 // =============================================
 // PART 20: SERVER STARTUP
 // =============================================
-const startServer = async () => {
-  // 1. Initialize DB Schema & Seed Data
-  try {
-    await initDB();
-  } catch (dbError) {
-    logError(`Database initialization failed: ${(dbError as Error).message}`);
-    logError('Server will continue running without full database functionality');
+let dbInitialized = false;
+export const initApp = async () => {
+  if (!dbInitialized) {
+    try {
+      await initDB();
+    } catch (dbError) {
+      logError(`Database initialization failed: ${(dbError as Error).message}`);
+    }
+    dbInitialized = true;
   }
+};
 
-  // 2. Start Background Jobs
+const startServer = async () => {
+  await initApp();
+
+  // Start Background Jobs
   startExpiryCheckerJob();
   startReminderSenderJob();
 
-  // 3. Start Listening HTTP & Socket Server
+  // Start Listening HTTP & Socket Server
   server.on('error', (error: NodeJS.ErrnoException) => {
     if (error.code === 'EADDRINUSE') {
       logError(`Port ${PORT} is already in use. Please stop the previous server or use another port.`);
@@ -148,7 +154,9 @@ const startServer = async () => {
   });
 };
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
 
 // Graceful Shutdown
 process.on('SIGTERM', () => {
@@ -157,3 +165,5 @@ process.on('SIGTERM', () => {
     logInfo('Process terminated.');
   });
 });
+
+export default app;

@@ -145,7 +145,7 @@ export const login = async (req: Request, res: Response) => {
         }
 
         // Auto-sync memUser to SQLite users table so they get a real SQLite ID
-        let syncedUser = memUser;
+        let syncedUser: any = memUser;
         try {
           const insertedUser = await UserModel.create({
             name: memUser.name,

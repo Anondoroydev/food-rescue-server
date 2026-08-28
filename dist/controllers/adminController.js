@@ -6,15 +6,15 @@ const db_1 = require("../config/db");
 const SystemLog_1 = require("../models/SystemLog");
 const getDashboard = async (_req, res) => {
     try {
-        const usersCount = await (0, db_1.query)(`SELECT COUNT(*) FROM users`);
-        const foodsCount = await (0, db_1.query)(`SELECT COUNT(*) FROM foods`);
-        const requestsCount = await (0, db_1.query)(`SELECT COUNT(*) FROM requests`);
-        const donationsCount = await (0, db_1.query)(`SELECT COUNT(*) FROM donations`);
+        const usersCount = await (0, db_1.query)(`SELECT COUNT(*) as count FROM users`);
+        const foodsCount = await (0, db_1.query)(`SELECT COUNT(*) as count FROM foods`);
+        const requestsCount = await (0, db_1.query)(`SELECT COUNT(*) as count FROM requests`);
+        const donationsCount = await (0, db_1.query)(`SELECT COUNT(*) as count FROM donations`);
         const monthlyStats = await (0, db_1.query)(`
-      SELECT TO_CHAR(created_at, 'Mon YYYY') as month, COUNT(*) as count
+      SELECT strftime('%Y-%m', created_at) as month, COUNT(*) as count
       FROM foods
-      GROUP BY TO_CHAR(created_at, 'Mon YYYY'), DATE_TRUNC('month', created_at)
-      ORDER BY DATE_TRUNC('month', created_at) DESC
+      GROUP BY strftime('%Y-%m', created_at)
+      ORDER BY month DESC
       LIMIT 6
     `);
         res.status(200).json({
@@ -88,8 +88,8 @@ const getReports = async (_req, res) => {
 exports.getReports = getReports;
 const getStats = async (_req, res) => {
     try {
-        const foodStatusBreakdown = await (0, db_1.query)(`SELECT status, COUNT(*) FROM foods GROUP BY status`);
-        const requestStatusBreakdown = await (0, db_1.query)(`SELECT status, COUNT(*) FROM requests GROUP BY status`);
+        const foodStatusBreakdown = await (0, db_1.query)(`SELECT status, COUNT(*) as count FROM foods GROUP BY status`);
+        const requestStatusBreakdown = await (0, db_1.query)(`SELECT status, COUNT(*) as count FROM requests GROUP BY status`);
         res.status(200).json({
             success: true,
             stats: {

@@ -91,3 +91,5 @@ out/
 # Local Postman
 postman_environment.json
 postman_collection.json.bak
+.vercel
+.env*

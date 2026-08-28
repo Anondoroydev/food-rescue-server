@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const FILE = path.join(process.cwd(), '.dev_users.json');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NOW_REGION);
+const FILE = isVercel ? path.join('/tmp', '.dev_users.json') : path.join(process.cwd(), '.dev_users.json');
 
 type DevUser = {
   id: number;

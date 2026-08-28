@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initDB = exports.query = exports.pool = void 0;
+exports.initDB = exports.query = exports.db = void 0;
 const pool_1 = require("./pool");
-Object.defineProperty(exports, "pool", { enumerable: true, get: function () { return pool_1.pool; } });
+Object.defineProperty(exports, "db", { enumerable: true, get: function () { return pool_1.db; } });
 var query_1 = require("./query");
 Object.defineProperty(exports, "query", { enumerable: true, get: function () { return query_1.query; } });
 var init_1 = require("./init");
 Object.defineProperty(exports, "initDB", { enumerable: true, get: function () { return init_1.initDB; } });
-exports.default = pool_1.pool;
+exports.default = pool_1.db;

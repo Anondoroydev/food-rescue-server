@@ -23,7 +23,7 @@ class SystemLogModel {
         return (res.rowCount || 0) > 0;
     }
     static async cleanup(daysOld = 30) {
-        const res = await (0, db_1.query)(`DELETE FROM system_logs WHERE created_at < NOW() - INTERVAL '${daysOld} days'`);
+        const res = await (0, db_1.query)(`DELETE FROM system_logs WHERE created_at < datetime('now', '-' || ? || ' days')`, [daysOld]);
         return res.rowCount || 0;
     }
 }
