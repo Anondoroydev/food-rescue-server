@@ -9,10 +9,14 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("../config/db");
 const logger_1 = require("../utils/logger");
-const reportDir = path_1.default.join(process.cwd(), 'reports');
-if (!fs_1.default.existsSync(reportDir)) {
-    fs_1.default.mkdirSync(reportDir, { recursive: true });
+const paths_1 = require("../config/paths");
+const reportDir = paths_1.REPORT_PATH;
+try {
+    if (!fs_1.default.existsSync(reportDir)) {
+        fs_1.default.mkdirSync(reportDir, { recursive: true });
+    }
 }
+catch (_) { }
 const generatePDFReport = async () => {
     return new Promise(async (resolve, reject) => {
         try {

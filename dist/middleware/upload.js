@@ -7,12 +7,22 @@ exports.uploadFoodImage = void 0;
 const multer_1 = __importDefault(require("multer"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
-const uploadDir = path_1.default.join(process.cwd(), 'uploads', 'foods');
-if (!fs_1.default.existsSync(uploadDir)) {
-    fs_1.default.mkdirSync(uploadDir, { recursive: true });
+const paths_1 = require("../config/paths");
+const uploadDir = path_1.default.join(paths_1.UPLOAD_PATH, 'foods');
+try {
+    if (!fs_1.default.existsSync(uploadDir)) {
+        fs_1.default.mkdirSync(uploadDir, { recursive: true });
+    }
 }
+catch (_) { }
 const storage = multer_1.default.diskStorage({
     destination: (_req, _file, cb) => {
+        try {
+            if (!fs_1.default.existsSync(uploadDir)) {
+                fs_1.default.mkdirSync(uploadDir, { recursive: true });
+            }
+        }
+        catch (_) { }
         cb(null, uploadDir);
     },
     filename: (_req, file, cb) => {

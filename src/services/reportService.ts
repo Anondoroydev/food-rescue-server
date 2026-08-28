@@ -4,10 +4,14 @@ import path from 'path';
 import { query } from '../config/db';
 import { logError } from '../utils/logger';
 
-const reportDir = path.join(process.cwd(), 'reports');
-if (!fs.existsSync(reportDir)) {
-  fs.mkdirSync(reportDir, { recursive: true });
-}
+import { REPORT_PATH } from '../config/paths';
+
+const reportDir = REPORT_PATH;
+try {
+  if (!fs.existsSync(reportDir)) {
+    fs.mkdirSync(reportDir, { recursive: true });
+  }
+} catch (_) {}
 
 export const generatePDFReport = async (): Promise<string> => {
   return new Promise(async (resolve, reject) => {

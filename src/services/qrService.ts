@@ -5,6 +5,8 @@ import path from 'path';
 import { query } from '../config/db';
 import { logError } from '../utils/logger';
 
+import { UPLOAD_PATH } from '../config/paths';
+
 export const generateQRCodeForRequest = async (requestId: number): Promise<{ qrCodeUrl: string; token: string }> => {
   try {
     const token = crypto.randomBytes(32).toString('hex');
@@ -14,10 +16,12 @@ export const generateQRCodeForRequest = async (requestId: number): Promise<{ qrC
       timestamp: Date.now()
     });
 
-    const qrDir = path.join(process.cwd(), 'uploads', 'qr');
-    if (!fs.existsSync(qrDir)) {
-      fs.mkdirSync(qrDir, { recursive: true });
-    }
+    const qrDir = path.join(UPLOAD_PATH, 'qr');
+    try {
+      if (!fs.existsSync(qrDir)) {
+        fs.mkdirSync(qrDir, { recursive: true });
+      }
+    } catch (_) {}
 
     const fileName = `qr_request_${requestId}.png`;
     const filePath = path.join(qrDir, fileName);

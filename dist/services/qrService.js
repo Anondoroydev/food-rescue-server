@@ -10,6 +10,7 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("../config/db");
 const logger_1 = require("../utils/logger");
+const paths_1 = require("../config/paths");
 const generateQRCodeForRequest = async (requestId) => {
     try {
         const token = crypto_1.default.randomBytes(32).toString('hex');
@@ -18,10 +19,13 @@ const generateQRCodeForRequest = async (requestId) => {
             token,
             timestamp: Date.now()
         });
-        const qrDir = path_1.default.join(process.cwd(), 'uploads', 'qr');
-        if (!fs_1.default.existsSync(qrDir)) {
-            fs_1.default.mkdirSync(qrDir, { recursive: true });
+        const qrDir = path_1.default.join(paths_1.UPLOAD_PATH, 'qr');
+        try {
+            if (!fs_1.default.existsSync(qrDir)) {
+                fs_1.default.mkdirSync(qrDir, { recursive: true });
+            }
         }
+        catch (_) { }
         const fileName = `qr_request_${requestId}.png`;
         const filePath = path_1.default.join(qrDir, fileName);
         await qrcode_1.default.toFile(filePath, qrData);
