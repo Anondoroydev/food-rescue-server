@@ -61,8 +61,14 @@ export const query = async (text: string, params: any[] = []): Promise<{ rows: a
     const trimmed = sqliteSQL.trim();
     const isReadOnlyQuery = /^SELECT\b/i.test(trimmed);
 
-    // Normalize params for SQLite (convert Date instances to ISO strings)
-    const cleanParams = params.map(p => (p instanceof Date ? p.toISOString() : p));
+    // Normalize params for SQLite (convert Date, boolean, undefined, and objects)
+    const cleanParams = params.map(p => {
+      if (p instanceof Date) return p.toISOString();
+      if (typeof p === 'boolean') return p ? 1 : 0;
+      if (p === undefined) return null;
+      if (typeof p === 'object' && p !== null && !(p instanceof Buffer)) return JSON.stringify(p);
+      return p;
+    });
 
     if (isReadOnlyQuery) {
       const stmt = db.prepare(sqliteSQL);
