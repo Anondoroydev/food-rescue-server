@@ -5,13 +5,15 @@ import {
   approveRequest,
   rejectRequest,
   collectFood,
-  getQRCode
+  getQRCode,
+  getRestaurantRequests
 } from '../controllers/requestController';
 import { authenticate, isNGO, isRestaurant } from '../middleware/auth';
 
 const router = Router();
 
 router.get('/my', authenticate, isNGO, getMyRequests);
+router.get('/restaurant', authenticate, isRestaurant, getRestaurantRequests);
 router.post('/', authenticate, isNGO, createRequest);
 router.put('/:id/approve', authenticate, isRestaurant, approveRequest);
 router.put('/:id/reject', authenticate, isRestaurant, rejectRequest);

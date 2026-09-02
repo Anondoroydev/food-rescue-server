@@ -53,6 +53,15 @@ export const getMyRequests = async (req: Request, res: Response) => {
   }
 };
 
+export const getRestaurantRequests = async (req: Request, res: Response) => {
+  try {
+    const requests = await RequestModel.findByRestaurant(req.user!.id);
+    res.status(200).json({ success: true, count: requests.length, requests });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error fetching requests' });
+  }
+};
+
 export const approveRequest = async (req: Request, res: Response) => {
   try {
     const id = parseInt(req.params.id, 10);
